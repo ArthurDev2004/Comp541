@@ -1,0 +1,23 @@
+INSURANCE DATA CLEANING AND TRANSFORMATION SUMMARY
+================================================================================
+
+1. NULL VALUES:
+   - Original null count: 0
+   - After filling: 0
+
+2. OUTLIERS:
+   - age: 0 outliers (0.00%)
+   - bmi: 9 outliers (0.67%)
+   - children: 0 outliers (0.00%)
+   - charges: 139 outliers (10.39%)
+
+3. DISCRETIZATION:
+   - Age groups: 6 categories
+   - BMI categories: 5 categories
+   - Charges ranges: 5 categories
+   - Children groups: 4 categories
+
+4. NORMALIZATION:
+   - Standard normalization (Z-score) applied
+   - Min-Max normalization (0-1) applied
+   - Normalized columns: 8
