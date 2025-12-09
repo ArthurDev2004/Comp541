@@ -1,0 +1,29 @@
+Insurance Feature Extraction (Creation)
+
+This script:
+1. Loads the cleaned insurance data
+2. One-hot encodes categorical features
+3. Creates interaction features
+4. Applies log transformation to charges
+5. Saves the final feature-engineered dataset
+
+output files would be 
+/mnt/data/insurance_features.csv
+
+heres the data shape 
+1338 records
+32 total features
+
+
+and the output will give you this when looking at the cleaned data
+age	bmi	children	charges	bmi_x_smoker	age_x_bmi	log_charges_capped
+19	27.90	0	16884.92	27.9	530.10	9.734236
+18	33.77	1	1725.55	0.0	607.86	7.453882
+28	33.00	3	4449.46	0.0	924.00	8.400763
+33	22.71	0	21984.47	0.0	749.27	9.998137
+32	28.88	0	3866.86	0.0	924.16	8.260455
+31	25.74	0	3756.62	0.0	797.94	8.231541
+46	33.44	1	8240.59	0.0	1538.24	9.016949
+37	27.74	3	7281.51	0.0	1026.38	8.893230
+37	29.83	2	6406.41	0.0	1103.71	8.765211
+62	25.84	0	28923.14	0.0	1550.40	10.272432
