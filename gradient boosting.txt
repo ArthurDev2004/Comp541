@@ -1,9 +1,14 @@
-# Gradient boosting model performance:
-train RMSE: 3804.24
-test RMSE: 4326.10
-train MAE: 2096.94
-test MAE: 2402.68
-train R²: 0.90
-test R²: 0.88
-CV R² scores: [0.83 0.92 0.82 0.79 0.84]
-mean CV R²: 0.84
+Gradient boosting model performance
+
+RMSE
+  train RMSE: 3804.24
+  test RMSE: 4326.10
+MAE
+  train MAE: 2096.94
+  test MAE: 2402.68
+R²
+  train R²: 0.90
+  test R²: 0.88
+CV
+  CV R² scores: [0.83 0.92 0.82 0.79 0.84]
+  mean CV R²: 0.84
