@@ -51,17 +51,53 @@ grid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring='r2', n_jobs=-1)
 grid_search.fit(X_train, y_train)
 best_model = grid_search.best_estimator_
 
-# 6. Evaluation
+# 6. Cross-validation on training set using the best model
+cv_scores = cross_val_score(best_model, X_train, y_train, cv=5, scoring='r2')
+
+# 7. Predictions
 y_pred_train = best_model.predict(X_train)
 y_pred_test = best_model.predict(X_test)
+
+# 8. Metrics
+train_rmse = mean_squared_error(y_train, y_pred_train) ** 0.5
+test_rmse  = mean_squared_error(y_test, y_pred_test) ** 0.5
+
+train_mae = mean_absolute_error(y_train, y_pred_train)
+test_mae = mean_absolute_error(y_test, y_pred_test)
+
 train_r2 = r2_score(y_train, y_pred_train)
 test_r2 = r2_score(y_test, y_pred_test)
 
-# 7. DEPLOYMENT (This creates the missing file)
-joblib.dump(best_model, 'elastic_net_model.pkl') 
-print("SUCCESS: 'elastic_net_model.pkl' has been saved!")
+# 9. Print to terminal and save txt of performance metrics
+print("\nElastic Net model performance\n")
+print("RMSE")
+print(f"  train RMSE: {train_rmse:.2f}")
+print(f"  test RMSE:  {test_rmse:.2f}")
+print("MAE")
+print(f"  train MAE:  {train_mae:.2f}")
+print(f"  test MAE:   {test_mae:.2f}")
+print("R²")
+print(f"  train R²:   {train_r2:.2f}")
+print(f"  test R²:    {test_r2:.2f}")
+print("CV")
+print(f"  CV R² scores: {np.round(cv_scores, 2)}")
+print(f"  mean CV R²:   {cv_scores.mean():.2f}")
 
-# Save text results too
-output_text = f"Elastic Net Results\nTest R2: {test_r2:.4f}"
-with open('elastic_net_summary.txt', 'w') as f:
-    f.write(output_text)
+summary = f"""Elastic Net model performance
+
+RMSE
+  train RMSE: {train_rmse:.2f}
+  test RMSE:  {test_rmse:.2f}
+MAE
+  train MAE:  {train_mae:.2f}
+  test MAE:   {test_mae:.2f}
+R²
+  train R²:   {train_r2:.2f}
+  test R²:    {test_r2:.2f}
+CV
+  CV R² scores: {np.round(cv_scores, 2)}
+  mean CV R²:   {cv_scores.mean():.2f}
+"""
+
+with open("elastic_net_summary.txt", "w") as f:
+    f.write(summary)
