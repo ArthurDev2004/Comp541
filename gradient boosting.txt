@@ -1,4 +1,4 @@
-#Gradient boosting model performance:
+# Gradient boosting model performance:
 train RMSE: 3804.24
 test RMSE: 4326.10
 train MAE: 2096.94
